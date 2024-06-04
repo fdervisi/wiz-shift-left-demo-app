@@ -47,7 +47,7 @@ data "aws_iam_policy_document" "bucket_policy" {
   }
 
   statement {
-    sid       = "AllowOaiListAccess"
+    sid       = "AllowOaiListAccess" 
     actions   = ["s3:ListBucket"]
     resources = ["arn:aws:s3:::${var.fqdn}-www-${random_id.uniq.hex}"]
 
