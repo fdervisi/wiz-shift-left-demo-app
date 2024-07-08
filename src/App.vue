@@ -1,6 +1,6 @@
 <template>
   <img id="portrait" alt="Portrait" src="./assets/portrait.jpg" />
-  <NixFoundation msg="Welcome to the TEST Foundation" />
+  <NixFoundation msg="Welcome to the FATOS Foundation" />
 </template>
 
 <script>
