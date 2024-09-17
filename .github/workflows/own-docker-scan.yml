@@ -1,4 +1,4 @@
-name: 'wiz-cli'
+name: 'Wiz-CLI Image Scan'
 on:
   workflow_dispatch:
 
