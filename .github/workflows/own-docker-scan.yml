@@ -36,7 +36,7 @@ jobs:
         WIZ_CLIENT_SECRET: ${{ secrets.WIZ_CLIENT_SECRET }}
 
     - name: Run wiz-cli directory  scan
-      run: ./wizcli dir scan -- path . --policy-hits-only
+      run: ./wizcli dir scan -- path "." --policy-hits-only
 
     # - name: Run wiz-cli docker image scan
     #   run: ./wizcli docker scan --image $TAG --policy "$POLICY" --policy-hits-only
