@@ -1,10 +1,10 @@
-name: 'Wiz-CLI Image Scan'
+name: 'Wiz-CLI Container Image Scan'
 on:
   workflow_dispatch:
 
 jobs:
   wiz-cli-image-scan:
-    name: 'Wiz-cli Image Scan'
+    name: 'Wiz-CLI Container Image Scan'
     runs-on: ubuntu-latest
     env:
       SCAN_PATH: "." # Set the relative path in the repo to build the image from
@@ -23,8 +23,8 @@ jobs:
 
     # It's possible to skip this step if this job is scheduled after an image-build job.
     # If that's the case, also set "Run wiz CLI docker image scan" step accordingly
-    # - name: Build the Docker image
-    #   run: cd $SCAN_PATH && docker build . --tag $TAG # Configure to fit the params you use to build your image
+    - name: Build the Docker image
+      run: cd $SCAN_PATH && docker build . --tag $TAG # Configure to fit the params you use to build your image
 
     - name: Download Wiz CLI
       run: curl -o wizcli https://downloads.wiz.io/wizcli/latest/wizcli-linux-amd64 && chmod +x wizcli
@@ -35,8 +35,5 @@ jobs:
         WIZ_CLIENT_ID: ${{ secrets.WIZ_CLIENT_ID }}
         WIZ_CLIENT_SECRET: ${{ secrets.WIZ_CLIENT_SECRET }}
 
-    - name: Run wiz-cli directory  scan
-      run: ./wizcli dir scan --path "." --policy-hits-only
-
-    # - name: Run wiz-cli docker image scan
-    #   run: ./wizcli docker scan --image $TAG --policy "$POLICY" --policy-hits-only
+    - name: Run wiz-cli docker image scan
+      run: ./wizcli docker scan --image $TAG --policy "$POLICY" --policy-hits-only
